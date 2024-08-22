@@ -1,5 +1,7 @@
 # eventhub
 
+[![codecov](https://codecov.io/gh/apageadev/eventhub/graph/badge.svg?token=IEKZKP7ER6)](https://codecov.io/gh/apageadev/eventhub)
+
 `EventHub` provides a lightweight event management system for Python projects using a simple publish/subscribe pattern.
 
 ## Installation
