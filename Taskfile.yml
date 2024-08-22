@@ -1,0 +1,19 @@
+version: "3"
+
+tasks:
+
+  fmt:
+    cmds:
+      - poetry run black eventhub tests
+
+  test:
+    cmds:
+      - poetry run pytest -sv --cov=eventhub tests/ --cov-report=term
+  
+  test-coverage:
+    cmds:
+      - poetry run pytest --cov=eventhub tests/ --cov-report=html
+  
+  open-cover:
+    cmds:
+      - open htmlcov/index.html
