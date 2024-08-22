@@ -5,6 +5,13 @@ on: [push, pull_request]
 jobs:
   code-coverage:
     runs-on: ubuntu-latest
+    
+    services:
+      redis:
+        image: redis:alpine
+        ports:
+          - 6379:6379
+        options: --health-cmd "redis-cli ping" --health-interval 10s --health-timeout 5s --health-retries 3
 
     steps:
     - name: Checkout repository
@@ -25,6 +32,9 @@ jobs:
         poetry install
 
     - name: Run tests with coverage
+      env:
+        REDIS_HOST: 127.0.0.1  # Redis service hostname
+        REDIS_PORT: 6379        # Redis service port
       run: |
         poetry run pytest --cov=documentdb tests/ --cov-report=xml
 
